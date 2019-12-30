@@ -14,7 +14,7 @@ mount -t devpts none /dev/pts
 
 # Set up an unprivileged user to build with
 useradd build
-mkdir -p /home/build/src
+mkdir -p /home/build/build/src
 chown -R build:build /home/build/build
 
 cd /home/build
