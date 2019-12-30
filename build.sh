@@ -7,7 +7,6 @@ set -exv
 
 # Set up an unprivileged user to build with
 useradd build
-groupadd build
 mkdir -p /working/build/src
 chown -R build:build working
 cd working
