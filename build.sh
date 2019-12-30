@@ -31,7 +31,7 @@ DEBIAN_FRONTEND=noninteractive apt-get install -t buster-backports -y llvm-8 cla
 
 # install remaining requirements to build Chromium
 mk-build-deps debian/control
-DEBIAN_FRONTEND=noninteractive apt-get -y -o Debug::pkgProblemResolver=yes --no-install-recommends install ungoogled-chromium-build-deps_*.deb
+DEBIAN_FRONTEND=noninteractive apt-get -y -o Debug::pkgProblemResolver=yes --no-install-recommends install ./ungoogled-chromium-build-deps_*.deb
 rm ungoogled-chromium-build-deps_*.deb
 
 # download and unpack Chromium sources (this will take some time)
