@@ -1,4 +1,6 @@
-#!/bin/bash -x -e
+#!/bin/bash
+
+set -exv
 
 # Based on https://github.com/ungoogled-software/ungoogled-chromium-debian/blob/debian_buster/README.md
 # Assumes that the packages are already installed thanks to debootstrap etc
