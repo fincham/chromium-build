@@ -5,6 +5,13 @@ set -exv
 # Based on https://github.com/ungoogled-software/ungoogled-chromium-debian/blob/debian_buster/README.md
 # Assumes that the packages are already installed thanks to debootstrap etc
 
+cd /
+mkdir -p proc
+mkdir -p /home/build
+mkdir -p /dev/pts || true
+mount -t proc proc proc
+mount -t devpts none /dev/pts
+
 # Set up an unprivileged user to build with
 useradd build
 mkdir -p /working/build/src
@@ -21,7 +28,7 @@ cd build/src
 # set up backports for newer llvm
 echo "deb https://deb.debian.org/debian/ buster-backports main" > /etc/apt/sources.list.d/backports.list
 apt-get update
-DEBIAN_FRONTEND=noninteractive apt-get install -y llvm-8 clang-8
+DEBIAN_FRONTEND=noninteractive apt-get install -t buster-backports -y llvm-8 clang-8 equivs
 
 su - build -c './debian/rules setup-debian'
 
