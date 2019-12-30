@@ -14,9 +14,9 @@ mount -t devpts none /dev/pts
 
 # Set up an unprivileged user to build with
 useradd build
-mkdir -p /working/build/src
-chown -R build:build working
-cd working
+cd /home/build
+mkdir -p build/src
+chown -R build:build build
 su - build -c 'git clone --recurse-submodules https://github.com/ungoogled-software/ungoogled-chromium-debian.git'
 cd ungoogled-chromium-debian
 su - build -c 'git checkout --recurse-submodules debian_buster'
