@@ -18,11 +18,12 @@ cd ..
 cp -pr ungoogled-chromium-debian/debian build/src/
 cd build/src
 
-su - build -c './debian/rules setup-debian'
-
 # set up backports for newer llvm
-echo "deb https://deb.debian.org/debian/ buster-backports main" > /etc/apt/sources/backports.list
+echo "deb https://deb.debian.org/debian/ buster-backports main" > /etc/apt/sources.list.d/backports.list
 apt-get update
+DEBIAN_FRONTEND=noninteractive apt-get install -y llvm-8 clang-8
+
+su - build -c './debian/rules setup-debian'
 
 # install remaining requirements to build Chromium
 mk-build-deps -i debian/control
